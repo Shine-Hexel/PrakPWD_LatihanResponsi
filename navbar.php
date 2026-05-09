@@ -12,13 +12,15 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Pustaka Digital</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <a href="koleksi.php" class="btn text-light">Koleksi Buku</a>
+                <a href="peminjaman.php" class="btn text-light">Peminjaman</a>
+            </div>
             <div>
-                <a href="koleksi.php" class="btn btn-outline-light">Koleksi Buku</a>
-                <a href="peminjaman.php" class="btn btn-outline-light">Peminjaman</a>
-                <a href="logout.php" class="btn btn-danger">Logout</a>
+                <a href="logout.php" class="btn btn-dark">Logout</a>
             </div>
         </div>
     </nav>

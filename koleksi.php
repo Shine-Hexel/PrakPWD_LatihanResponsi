@@ -54,7 +54,8 @@ include 'koneksi.php';
                     <td><?= $d['stok']; ?></td>
                     <td><?= $status; ?></td>
                     <td>
-                        <a href="proses_buku.php?hapus=<?= $d['id_buku']; ?>" class="btn btn-danger btn-sm"
+                        <a href="editBuku.php?id=<?= $d['id_buku']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="prosesBuku.php?hapus=<?= $d['id_buku']; ?>" class="btn btn-danger btn-sm"
                             onclick="return confirm('Yakin nih ente hapus data?')">Hapus</a>
                     </td>
                 </tr>
@@ -66,7 +67,7 @@ include 'koneksi.php';
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <form action="proses_buku.php" method="POST">
+                        <form action="prosesBuku.php" method="POST">
                             <h5 class="modal-title">Tambah Buku</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>

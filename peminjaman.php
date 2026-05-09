@@ -21,8 +21,8 @@ include 'koneksi.php';
     <?php include 'navbar.php'; ?>
     <div class="container mt-4">
         <h2 class="mb-4">Form Data Peminjaman Buku</h2>
-        <form action="proses_peminjaman.php" method="POST" class="mb-4">
-            <input type="text" name="kode_peminjam" class="form-control mb-2" placeholder="Kode Peminjaman" required>
+        <form action="prosesPinjam.php" method="POST" class="mb-4">
+            <input type="text" name="kode_peminjaman" class="form-control mb-2" placeholder="Kode Peminjaman" required>
             <input type="text" name="nama_peminjam" class="form-control mb-2" placeholder="Nama Peminjam" required>
 
             <select name="id_buku" class="form-control mb-2">
@@ -39,7 +39,7 @@ include 'koneksi.php';
 
             <input type="date" name="tanggal_pinjam" class="form-control mb-2" required>
             <input type="date" name="tanggal_kembali" class="form-control mb-2" required>
-            <button type="submit" class="btn btn-primary">simpan</button>
+            <button type="submit" name="pinjam" class="btn btn-primary">simpan</button>
             <button type="button" class="btn btn-secondary" onclick="window.history.back()">kembali</button>
         </form>
 
@@ -52,19 +52,21 @@ include 'koneksi.php';
                 <th>Aksi</th>
             </tr>
             <?php
-            $data = mysqli_query($conn, "SELECT peminjaman.*, buku.judul_buku FROM peminjaman JOIN buku ON peminjaman.id_buku=buku.id_buku");
+            $data = mysqli_query($conn, "SELECT peminjaman.*, buku.judul_buku FROM peminjaman JOIN buku ON peminjaman.id_buku=buku.id_buku;");
             while ($d = mysqli_fetch_array($data)) { ?>
                 <tr>
-                    <td><?= $d['kode_peminjam']; ?></td>
+                    <td><?= $d['kode_peminjaman']; ?></td>
                     <td><?= $d['nama_peminjam']; ?></td>
                     <td><?= $d['judul_buku']; ?></td>
                     <td><?= $d['status']; ?></td>
                     <td>
                         <?php if ($d['status'] == 'Dipinjam'): ?>
-                            <a href="proses_peminjaman.php?kembali=<?= $d['id_peminjaman']; ?>&buku=<?= $d['id_buku']; ?>"
+                            <a href="prosesPinjam.php?kembali=<?= $d['id_peminjaman']; ?>&buku=<?= $d['id_buku']; ?>"
                                 class="btn btn-success btn-sm"
                                 onclick="return confirm('ente yakin mau ngembaliin buku?')">Kembalikan</a>
-                        <?php endif; ?>
+                            <?php else: ?>
+                                <span class="badge bg-success">Selesai</span>
+                            <?php endif; ?>
                     </td>
                 </tr>
             <?php }

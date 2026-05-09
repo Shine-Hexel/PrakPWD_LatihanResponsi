@@ -7,7 +7,7 @@ if(isset($_POST['tambah'])){
 }
 
 if(isset($_GET['hapus'])){
-    mysqli_query($conn, "DELETE FROM buku WHERE id_buku='$_GET[hapus]'");
+    mysqli_query($conn, "DELETE FROM buku WHERE id_buku='$_GET[hapus]';");
 }
 
 header("Location:koleksi.php");
