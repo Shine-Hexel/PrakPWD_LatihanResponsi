@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start(); 
+?>
 
 <!doctype html>
 <html lang="en">
@@ -24,7 +25,7 @@
                 </div>
             <?php endif; ?>
 
-            <form action="proses_login.php" method="POST">
+            <form action="prosesLogin.php" method="POST">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="username" name="username">
@@ -34,6 +35,7 @@
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Login</button>
+            
             </form>
         </div>
 

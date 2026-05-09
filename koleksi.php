@@ -24,14 +24,14 @@ include 'koneksi.php';
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#tambahModal">Tambah Buku</button>
         <table class="table">
             <tr class="table-primary-bordered">
-                <th scope="col">ID</th>
-                <th scope="col">Kode Buku</th>
-                <th scope="col">Judul</th>
-                <th scope="col">Pengarang</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Stok</th>
-                <th scope="col">Status</th>
-                <th scope="col">Aksi</th>
+                <th>ID</th>
+                <th>Kode</th>
+                <th>Judul</th>
+                <th>Pengarang</th>
+                <th>Kategori</th>
+                <th>Stok</th>
+                <th>Status</th>
+                <th>Aksi</th>
             </tr>
 
             <?php
@@ -83,7 +83,8 @@ include 'koneksi.php';
                         <input type="number" name="stok" class="form-control mb-2" placeholder="Stok" required>
                         <div>
                             <div class="modal-footer">
-                                <button type="submit" name="tambah" class="btn btn-primary w-100">Tambah</button>
+                                <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                             </div>
                         </div>
                     </div>

@@ -5,19 +5,17 @@ include 'koneksi.php';
 $username = $_POST['username'];
 $password = MD5($_POST['password']);
 
-if(empty($username) || empty($_POST['password'])) {
-    header("Location: index.php?error=1");
-    exit();
+if (empty($username) || empty($_POST['password'])) {
+    header("Location:index.php?error=kosong");
+    exit;
 }
 
-$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-$result = mysqli_query($koneksi, $query);
+$query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username' AND password='$password'");
 
-if($result && mysqli_num_rows($result) > 0){
-    $_SESSION['username'] = $username;
-    header("Location: koleksi.php");
-    exit();
+if (mysqli_num_rows($query) > 0) {
+    $_SESSION['login'] = true;
+    header("Location:koleksi.php");
 } else {
-    header("Location: index.php?error=1");
-    exit();
+    header("Location:index.php?error=gagal");
 }
+?>
