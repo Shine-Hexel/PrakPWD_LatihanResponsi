@@ -32,7 +32,9 @@ if (isset($_GET['id'])) {
                 <div class="card-body">
                     <h2 class="mb-4 text-center">Edit Data Buku</h2>
                     <form action="prosesBuku.php" method="POST">
-                        <input type="hidden" name="id_buku" value="<?= $d['id_buku']; ?>">
+                        <p class="mb-1 mt-3">ID Buku</p>
+                        <input class="form-control mb-2" type="text" value="<?= $d['id_buku']; ?>"
+                            aria-label="readonly input example" readonly style="background-color: #d3d3d3; opacity: 1;">
                         <p class="mb-1 mt-3">Kode Buku</p>
                         <input type="text" name="kode_buku" class="form-control mb-2" placeholder="Kode Buku"
                             value="<?= $d['kode_buku']; ?>" required>
@@ -43,8 +45,11 @@ if (isset($_GET['id'])) {
                         <input type="text" name="pengarang" class="form-control mb-2" placeholder="Pengarang"
                             value="<?= $d['pengarang']; ?>" required>
                         <p class="mb-1 mt-3">Kategori</p>
-                        <input type="text" name="kategori" class="form-control mb-2" placeholder="Kategori"
-                            value="<?= $d['kategori']; ?>" required>
+                        <select name="kategori" class="form-control mb-2 required">
+                            <option <?= $d['kategori'] == 'Novel' ? 'selected' : ''; ?>>Novel</option>
+                            <option <?= $d['kategori'] == 'Pendidikan' ? 'selected' : ''; ?>>Pendidikan</option>
+                            <option <?= $d['kategori'] == 'Teknologi' ? 'selected' : ''; ?>>Teknologi</option>
+                        </select>
                         <p class="mb-1 mt-3">Stok</p>
                         <input type="number" name="stok" class="form-control mb-2" placeholder="Stok"
                             value="<?= $d['stok']; ?>" required>

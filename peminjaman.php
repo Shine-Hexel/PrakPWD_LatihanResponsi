@@ -26,12 +26,14 @@ include 'koneksi.php';
             <div class="card">
                 <div class="card-body">
                     <h2 class="mb-4 text-center">Data Peminjaman</h2>
-                    <a href="formPinjam.php" class="btn btn-success mb-3">Tambah Peminjaman</a>
+                    <div class="d-flex justify-content-end">
+                        <a href="formPinjam.php" class="btn btn-secondary mb-3">Catat Peminjaman</a>
+                    </div>
                     <table class="table">
                         <tr class="table-info">
                             <th>ID</th>
-                            <th>Kode</th>
-                            <th>Nama</th>
+                            <th>Kode Peminjaman</th>
+                            <th>Peminjam</th>
                             <th>Buku</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
@@ -42,7 +44,7 @@ include 'koneksi.php';
                         $data = mysqli_query($conn, "SELECT peminjaman.*, buku.judul_buku FROM peminjaman JOIN buku ON peminjaman.id_buku=buku.id_buku;");
                         while ($d = mysqli_fetch_array($data)) { ?>
                             <tr>
-                                <td><?= $d['id_peminjaman']; ?></td>
+                                <td style="font-weight: bold;"><?= $d['id_peminjaman']; ?></td>
                                 <td><?= $d['kode_peminjaman']; ?></td>
                                 <td><?= $d['nama_peminjam']; ?></td>
                                 <td><?= $d['judul_buku']; ?></td>

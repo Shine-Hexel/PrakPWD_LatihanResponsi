@@ -42,7 +42,7 @@ include 'koneksi.php';
                         <?php
                         $data = mysqli_query($conn, "SELECT * FROM buku");
                         while ($d = mysqli_fetch_array($data)) {
-                            if ($d['stok'] <= 0) {
+                            if ($d['stok'] == 0) {
                                 $status = "Habis wak";
                             } elseif ($d['stok'] <= 5 && $d['stok'] > 0) {
                                 $status = "Stok menipis nich";
@@ -51,7 +51,7 @@ include 'koneksi.php';
                             }
                             ?>
                             <tr>
-                                <td><?= $d['id_buku']; ?></td>
+                                <td style="font-weight: bold;"><?= $d['id_buku']; ?></td>
                                 <td><?= $d['kode_buku']; ?></td>
                                 <td><?= $d['judul_buku']; ?></td>
                                 <td><?= $d['pengarang']; ?></td>

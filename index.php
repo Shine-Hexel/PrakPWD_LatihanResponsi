@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <div class="bg-light d-flex justify-content-center align-items-center vh-100">
-        <div class="card p-4 shadow" style="width: 400px;">
+    <div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #009dff;">
+        <div class="card p-4 shadow" style="width: 400px; background-color: aliceblue;">
             <h2 class="text-center mb-4">Login Pustaka Digital</h2>
             <p class="text-center mb-4">Sistem Perpustakaan Nasional</p>
 
