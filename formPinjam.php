@@ -23,8 +23,8 @@ include 'koneksi.php';
         <?php include 'navbar.php'; ?>
     </div>
     <div class="container-fluid banner">
-        <div class="container mt-4">
-            <div class="card">
+        <div class="container p-6">
+            <div class="card mx-auto" style="max-width: 800px;">
                 <div class="card-body">
                     <h2 class="mb-4 text-center">Form Data Peminjaman Buku</h2>
                     <form action="prosesPinjam.php" method="POST" class="mb-4">
