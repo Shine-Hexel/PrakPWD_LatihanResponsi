@@ -18,78 +18,54 @@ include 'koneksi.php';
 </head>
 
 <body>
-    <?php include 'navbar.php'; ?>
-    <div class="container mt-4">
-        <h2 class="mb-4">Koleksi Buku</h2>
-        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#tambahModal">Tambah Buku</button>
-        <table class="table">
-            <tr class="table-primary-bordered">
-                <th>ID</th>
-                <th>Kode</th>
-                <th>Judul</th>
-                <th>Pengarang</th>
-                <th>Kategori</th>
-                <th>Stok</th>
-                <th>Status</th>
-                <th>Aksi</th>
-            </tr>
+    <div>
+        <?php include 'navbar.php'; ?>
+    </div>
+    <div class="container-fluid banner">
+        <div class="container mt-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-4 text-center">Koleksi Buku</h2>
+                    <a href="formBuku.php" class="btn btn-success mb-3">Tambah Buku</a>
+                    <table class="table ">
+                        <tr class="table-info">
+                            <th>ID</th>
+                            <th>Kode</th>
+                            <th>Judul</th>
+                            <th>Pengarang</th>
+                            <th>Kategori</th>
+                            <th>Stok</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
 
-            <?php
-            $data = mysqli_query($conn, "SELECT * FROM buku");
-            while ($d = mysqli_fetch_array($data)) {
-                if ($d['stok'] > 0) {
-                    $status = "Habis wak";
-                } elseif ($d['stok'] <= 5) {
-                    $status = "Stok menipis nich";
-                } else {
-                    $status = "Tersedia :v";
-                }
-                ?>
-                <tr>
-                    <td><?= $d['id_buku']; ?></td>
-                    <td><?= $d['kode_buku']; ?></td>
-                    <td><?= $d['judul_buku']; ?></td>
-                    <td><?= $d['pengarang']; ?></td>
-                    <td><?= $d['kategori']; ?></td>
-                    <td><?= $d['stok']; ?></td>
-                    <td><?= $status; ?></td>
-                    <td>
-                        <a href="editBuku.php?id=<?= $d['id_buku']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="prosesBuku.php?hapus=<?= $d['id_buku']; ?>" class="btn btn-danger btn-sm"
-                            onclick="return confirm('Yakin nih ente hapus data?')">Hapus</a>
-                    </td>
-                </tr>
-            <?php } ?>
-        </table>
-
-        <!-- yg ini modal buat nambah buku -->
-        <div class="modal fade" id="tambahModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <form action="prosesBuku.php" method="POST">
-                            <h5 class="modal-title">Tambah Buku</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="text" name="kode_buku" class="form-control mb-2" placeholder="Kode Buku" required>
-                        <input type="text" name="judul_buku" class="form-control mb-2" placeholder="Judul Buku"
-                            required>
-                        <input type="text" name="pengarang" class="form-control mb-2" placeholder="Pengarang" required>
-                        <select name="kategori" class="form-control mb-2 required">
-                            <option>Novel</option>
-                            <option>Pendidikan</option>
-                            <option>Teknologi</option>
-                        </select>
-                        <input type="number" name="stok" class="form-control mb-2" placeholder="Stok" required>
-                        <div>
-                            <div class="modal-footer">
-                                <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                            </div>
-                        </div>
-                    </div>
-                    </form>
+                        <?php
+                        $data = mysqli_query($conn, "SELECT * FROM buku");
+                        while ($d = mysqli_fetch_array($data)) {
+                            if ($d['stok'] <= 0) {
+                                $status = "Habis wak";
+                            } elseif ($d['stok'] <= 5 && $d['stok'] > 0) {
+                                $status = "Stok menipis nich";
+                            } else {
+                                $status = "Tersedia :v";
+                            }
+                            ?>
+                            <tr>
+                                <td><?= $d['id_buku']; ?></td>
+                                <td><?= $d['kode_buku']; ?></td>
+                                <td><?= $d['judul_buku']; ?></td>
+                                <td><?= $d['pengarang']; ?></td>
+                                <td><?= $d['kategori']; ?></td>
+                                <td><?= $d['stok']; ?></td>
+                                <td><?= $status; ?></td>
+                                <td>
+                                    <a href="editBuku.php?id=<?= $d['id_buku']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="prosesBuku.php?hapus=<?= $d['id_buku']; ?>" class="btn btn-warning btn-sm"
+                                        onclick="return confirm('Yakin nih ente hapus data?')">Hapus</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </table>
                 </div>
             </div>
         </div>

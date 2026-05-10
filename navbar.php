@@ -20,7 +20,7 @@
                 <a href="peminjaman.php" class="btn text-light">Peminjaman</a>
             </div>
             <div>
-                <a href="logout.php" class="btn btn-dark">Logout</a>
+                <a href="logout.php" class="btn btn-dark">keluar</a>
             </div>
         </div>
     </nav>
